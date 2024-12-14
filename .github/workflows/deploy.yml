@@ -35,7 +35,7 @@ jobs:
             git init
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git branch gh-pages
+            git config --global init.defaultBranch main
             git add .
             git commit -m "Deploy build artifacts"
-            git push --force https://${{ secrets.PROD_ENV }}@github.com/janbu12/vite-golang-app.git gh-pages
+            git push --force https://${{ secrets.PROD_ENV }}@github.com/janbu12/vite-golang-app.git main:gh-pages
