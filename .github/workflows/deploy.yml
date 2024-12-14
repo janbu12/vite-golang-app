@@ -37,7 +37,7 @@ jobs:
         run: tar -czf dist.tar.gz ./ui/dist/
 
 
-      - name: Clean archice public on Server
+      - name: Deploy to Server
         uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.HOST }}
@@ -59,12 +59,4 @@ jobs:
           target: /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/dist.tar.gz
 
       # 7. Extract Build Artifacts on Server
-      - name: Clean dist.tar.gz on Server
-        uses: appleboy/ssh-action@v1.2.0
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.PRIVATE_KEY }}
-          port: ${{ secrets.PORT }}
-          script: |
-            rm /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/dist.tar.gz
+      
