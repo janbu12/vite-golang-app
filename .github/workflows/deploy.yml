@@ -32,6 +32,9 @@ jobs:
           cd ui
           npm run build
 
+      - name: Archive Build Artifacts
+        run: tar -czf dist.tar.gz dist/
+
       # 5. Copy Build Artifacts to Server
       - name: Deploy to Server
         uses: appleboy/ssh-action@v1.2.0
@@ -43,4 +46,4 @@ jobs:
           script: |
             rm -rf /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/*
             mkdir -p /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
-            cp -R dist/* /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
+            tar -xzf dist.tar.gz -C /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
