@@ -39,4 +39,4 @@ jobs:
            git config --global init.defaultBranch main
            git add .
            git commit -m "Deploy build artifacts"
-           git push --force https://${{ secrets.PROD_ENV.GH_TOKEN }}@github.com/janbu12/vite-golang-app.git main
+           git push --force https://${{ secrets.GH_TOKEN }}@github.com/janbu12/vite-golang-app.git main:build
