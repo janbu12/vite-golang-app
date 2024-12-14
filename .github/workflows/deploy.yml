@@ -22,9 +22,9 @@ jobs:
 
       # 3. Install Dependencies
       - name: Install Dependencies
-        run:  |
-         cd ui 
-         npm install
+        run: |
+          cd ui
+          npm install
 
       # 4. Build Project
       - name: Build Project
@@ -32,12 +32,22 @@ jobs:
           cd ui
           npm run build
 
+      # 5. Archive Build Artifacts
       - name: Archive Build Artifacts
-        run: | 
-          tar -czf dist.tar.gz ./ui/dist/
-          ls -R ./ui/dist
+        run: tar -czf dist.tar.gz ./ui/dist/
 
-      # 5. Copy Build Artifacts to Server
+      # 6. Copy Build Artifacts to Server
+      - name: Copy dist.tar.gz to Server
+        uses: appleboy/scp-action@v0.1.1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          source: dist.tar.gz
+          target: /tmp/dist.tar.gz
+
+      # 7. Extract Build Artifacts on Server
       - name: Deploy to Server
         uses: appleboy/ssh-action@v1.2.0
         with:
@@ -48,4 +58,5 @@ jobs:
           script: |
             rm -rf /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/*
             mkdir -p /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
-            tar -xzf dist.tar.gz ./ui/dist/ -C /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
+            tar -xzf /tmp/dist.tar.gz -C /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
+            rm /tmp/dist.tar.gz
