@@ -46,5 +46,4 @@ jobs:
           script: |
             rm -rf /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/*
             mkdir -p /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
-            cp /path/to/local/dist.tar.gz /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/
-            tar -xzf /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/dist.tar.gz -C /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
+            tar -xzf dist.tar.gz ./ui/dist/ -C /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
