@@ -56,7 +56,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            rm -rf /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/*
-            mkdir -p /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
-            tar -xzf /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/dist.tar.gz -C /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app
-            rm -rf /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/dist.tar.gz
+            rm -rf domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/*
+            mkdir -p domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
+            tar -xzf domains/tscreativestudio.com/public_html/vite-golang-app/dist.tar.gz -C /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app
+            rm -rf domains/tscreativestudio.com/public_html/vite-golang-app/dist.tar.gz
