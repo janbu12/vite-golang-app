@@ -1,4 +1,4 @@
-name: Deploy React App
+name: Build and Deploy
 
 on:
   push:
@@ -6,22 +6,37 @@ on:
       - main
 
 jobs:
-  test:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    container:
-      image: node:18
+
     steps:
+      # 1. Checkout Repository
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      # 2. Setup Node.js
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: Install Dependencies (UI)
-        run: |
-          cd ui
-          npm ci
-          npm run build
-          
+      # 3. Install Dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # 4. Build Project
+      - name: Build Project
+        run: npm run build
+
+      # 5. Copy Build Artifacts to Server
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            rm -rf /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/*
+            mkdir -p /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
+            cp -R public/* /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
