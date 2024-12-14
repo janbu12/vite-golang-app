@@ -36,6 +36,17 @@ jobs:
       - name: Archive Build Artifacts
         run: tar -czf dist.tar.gz ./ui/dist/
 
+
+      - name: Clean archice public on Server
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            rm -rf /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/*
+
       # 6. Copy Build Artifacts to Server
       - name: Copy dist.tar.gz to Server
         uses: appleboy/scp-action@v0.1.7
@@ -48,15 +59,12 @@ jobs:
           target: /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/dist.tar.gz
 
       # 7. Extract Build Artifacts on Server
-      # - name: Deploy to Server
-      #   uses: appleboy/ssh-action@v1.2.0
-      #   with:
-      #     host: ${{ secrets.HOST }}
-      #     username: ${{ secrets.USER }}
-      #     key: ${{ secrets.PRIVATE_KEY }}
-      #     port: ${{ secrets.PORT }}
-      #     script: |
-      #       rm -rf /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/*
-      #       mkdir -p /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
-      #       tar -xzf /tmp/dist.tar.gz -C /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
-      #       rm /tmp/dist.tar.gz
+      - name: Clean archice public on Server
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            rm -rf /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/dist.tar.gz
