@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Gallery from "./pages/Gallery";
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/gallery" element={<Gallery />} />
       </Routes>
     </Router>
   )
