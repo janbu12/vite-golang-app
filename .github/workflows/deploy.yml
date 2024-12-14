@@ -32,7 +32,4 @@ jobs:
         env:
             GH_TOKEN: ${{ secrets.PROD_ENV }}
         run: |
-          echo "Token: $GH_TOKEN"
-            git remote remove toHostinger || true
-            git remote add toHostinger https://${GH_TOKEN}@github.com/janbu12/vite-golang-app.git
-            git push toHostinger main --force
+          git push origin main --force
