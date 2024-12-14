@@ -44,7 +44,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
-          source: ./ui/dist/dist.tar.gz
+          source: "dist.tar.gz"
           target: /tmp/dist.tar.gz
 
       # 7. Extract Build Artifacts on Server
