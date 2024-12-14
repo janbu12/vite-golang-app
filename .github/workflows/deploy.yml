@@ -38,13 +38,13 @@ jobs:
 
       # 6. Copy Build Artifacts to Server
       - name: Copy dist.tar.gz to Server
-        uses: appleboy/scp-action@v0.1.1
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
-          source: dist.tar.gz
+          source: ./ui/dist/dist.tar.gz
           target: /tmp/dist.tar.gz
 
       # 7. Extract Build Artifacts on Server
