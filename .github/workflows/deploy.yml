@@ -34,5 +34,6 @@ jobs:
         run: |
           cd ui
           echo "Token: $GH_TOKEN"
-          git remote add toHostinger -t https://${GH_TOKEN}@github.com/janbu12/vite-golang-app.git
-          git push toHostinger main --force
+            git remote remove toHostinger || true
+            git remote add toHostinger https://${GH_TOKEN}@github.com/janbu12/vite-golang-app.git
+            git push toHostinger main --force
