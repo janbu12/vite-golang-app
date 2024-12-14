@@ -43,4 +43,4 @@ jobs:
           script: |
             rm -rf /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/*
             mkdir -p /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
-            cp -R ./ui/public/* /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
+            cp -R ./ui/dist/* /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
