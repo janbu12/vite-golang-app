@@ -29,7 +29,9 @@ jobs:
           npm run build
 
       - name: Deploy to Hostinger
+        env:
+            GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           cd ui
-          git remote add hostinger https://github.com/janbu12/vite-golang-app.git
+          git remote add hostinger https://${GH_TOKEN}@github.com/janbu12/vite-golang-app.git
           git push hostinger main --force
