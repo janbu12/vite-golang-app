@@ -30,9 +30,9 @@ jobs:
 
       - name: Deploy to Hostinger
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+            GH_TOKEN: ${{ secrets.PROD_ENV }}
         run: |
           cd ui
-          echo "${{secrets.GH_TOKEN}}"
-          git remote add hostinger https://${GH_TOKEN}@github.com/aprnna/VouKi.git
+          echo "Token: $GH_TOKEN"
+          git remote add hostinger https://${GH_TOKEN}@github.com/janbu12/vite-golang-app.git
           git push hostinger main --force
