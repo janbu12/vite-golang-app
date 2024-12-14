@@ -31,7 +31,7 @@ jobs:
 
       - name: Deploy to Hostinger
         run: |
-           cd public
+           cd ui/public
             git init
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
