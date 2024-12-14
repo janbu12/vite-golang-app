@@ -22,14 +22,15 @@ jobs:
         run: |
           cd ui
           npm install
+          npm ci
 
       - name: Build React App (UI)
         run: |
           cd ui
           npm run build
 
-      - name: Deploy to Hostinger
-        env:
-            GH_TOKEN: ${{ secrets.PROD_ENV }}
-        run: |
-          git push origin main --force
+      # - name: Deploy to Hostinger
+      #   env:
+      #       GH_TOKEN: ${{ secrets.PROD_ENV }}
+      #   run: |
+      #     git push origin main --force
