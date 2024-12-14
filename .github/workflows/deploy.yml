@@ -29,8 +29,12 @@ jobs:
           cd ui
           npm run build
 
-      # - name: Deploy to Hostinger
-      #   env:
-      #       GH_TOKEN: ${{ secrets.PROD_ENV }}
-      #   run: |
-      #     git push origin main --force
+      - name: Deploy to Hostinger
+        run: |
+           cd public
+            git init
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add .
+            git commit -m "Deploy build artifacts"
+            git push --force https://${{ secrets.PROD_ENV }}@github.com/janbu12/vite-golang-app.git main:gh-pages
