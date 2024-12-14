@@ -33,4 +33,5 @@ jobs:
             GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           cd ui
+          git add hostinger https://${GH_TOKEN}@github.com/janbu12/vite-golang-app.git
           git push hostinger main --force
