@@ -33,7 +33,7 @@ jobs:
           npm run build
 
       - name: Archive Build Artifacts
-        run: tar -czf dist.tar.gz dist/
+        run: tar -czf dist.tar.gz ./ui/dist/
 
       # 5. Copy Build Artifacts to Server
       - name: Deploy to Server
