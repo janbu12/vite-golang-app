@@ -22,11 +22,15 @@ jobs:
 
       # 3. Install Dependencies
       - name: Install Dependencies
-        run: npm install
+        run:  |
+         cd/ui 
+         npm install
 
       # 4. Build Project
       - name: Build Project
-        run: npm run build
+        run: |
+          cd ui
+          npm run build
 
       # 5. Copy Build Artifacts to Server
       - name: Deploy to Server
