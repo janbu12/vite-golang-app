@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Gallery from "./pages/Gallery";
+import Error from "./pages/Error";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </Router>
   )
