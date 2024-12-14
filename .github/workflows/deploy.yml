@@ -34,5 +34,5 @@ jobs:
         run: |
           cd ui
           echo "Token: $GH_TOKEN"
-          git remote add hostinger https://${GH_TOKEN}@github.com/janbu12/vite-golang-app.git
+          git remote add hostinger https://github.com/janbu12/vite-golang-app.git
           git push hostinger main --force
