@@ -45,17 +45,16 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
           source: "dist.tar.gz"
-          target: /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/dist.tar.gz
+          target: /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/
 
       # 7. Extract Build Artifacts on Server
-      # - name: Deploy to Server
-      #   uses: appleboy/ssh-action@v1.2.0
-      #   with:
-      #     host: ${{ secrets.HOST }}
-      #     username: ${{ secrets.USER }}
-      #     key: ${{ secrets.PRIVATE_KEY }}
-      #     port: ${{ secrets.PORT }}
-      #     script: |
-      #       rm -rf /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/*
-      #       mkdir -p /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
-      #       rm -rf /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/dist.tar.gz
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            tar -xzf /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/dist.tar.gz -C /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public
+            rm -rf /home/u328440314/domains/tscreativestudio.com/public_html/vite-golang-app/ui/public/dist.tar.gz
